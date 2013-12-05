@@ -2895,3 +2895,146 @@ Processing by PostsController#show as HTML
   Rendered layouts/_navigation.html.erb (0.2ms)
   Rendered layouts/_messages.html.erb (0.1ms)
 Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2013-12-05 20:45:38 +0000
+
+ActionController::RoutingError (No route matches [GET] "/movies"):
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/nisartahir/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/nisartahir/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/nisartahir/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/nisartahir/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/nisartahir/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /Users/nisartahir/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.8ms)
+  Rendered /Users/nisartahir/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (12.8ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2013-12-05 20:57:29 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 25ms (Views: 14.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-05 20:57:32 +0000
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?  [["post_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?[0m  [["post_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered posts/index.html.erb within layouts/application (15.0ms)
+  Rendered layouts/_navigation.html.erb (0.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 19.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2013-12-05 20:57:34 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2013-12-05 20:57:40 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 40ms (Views: 38.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-05 21:10:29 +0000
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?  [["post_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 2]]
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_navigation.html.erb (0.1ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2013-12-05 21:10:34 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?  [["post_id", 1]]
+  Rendered shared/_content_title.html.erb (0.3ms)
+  Rendered posts/show.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-05 21:11:19 +0000
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 2ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1: <%= render "shared/content_title", title: @post.title %>
+    2: 
+    3: <% @posts.each do |post|%>
+    4:   <div class="row">
+  app/views/posts/index.html.erb:1:in `_app_views_posts_index_html_erb__4142952137163128770_70185843778060'
+
+
+  Rendered /Users/nisartahir/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/nisartahir/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/nisartahir/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-05 21:11:45 +0000
+Processing by PostsController#index as HTML
+  Rendered shared/_content_title.html.erb (0.2ms)
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?  [["post_id", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  [1m[36mCategory Load (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "postcategories" ON "categories"."id" = "postcategories"."category_id" WHERE "postcategories"."post_id" = ?[0m  [["post_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered posts/index.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_navigation.html.erb (0.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.4ms)
